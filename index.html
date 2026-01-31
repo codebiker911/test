@@ -3,41 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Добро пожаловать в MegaKnaght</title>
+    <title>Nginx работает!</title>
     <style>
         body {
-            width: 35em;
-            margin: 0 auto;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: #f0f2f5;
-            color: #333;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            margin: 0;
+            color: #333;
         }
         .container {
-            background-color: white;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             text-align: center;
+            background: white;
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            max-width: 500px;
         }
-        h1 {
-            color: #009639; /* Nginx green */
-            margin-bottom: 10px;
-        }
-        p {
-            font-size: 1.1em;
-            line-height: 1.5;
-        }
+        h1 { color: #009639; margin-bottom: 10px; }
+        p { font-size: 1.1rem; line-height: 1.6; }
+        .footer { margin-top: 25px; font-size: 0.8rem; color: #888; }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>С возвращением 2011</h1>
-        <p>Если вы видите эту страницу, значит веб-сервер Nginx успешно установлен и работает.</p>
-        <p><em>Требуется дальнейшая настройка.</em></p>
+        <h1>Nginx готов к работе!</h1>
+        <p>Если вы видите эту страницу, значит веб-сервер успешно установлен и настроен.</p>
+        <p>Время приступать к деплою вашего проекта. 🚀</p>
+        <div class="footer">
+            Настроено в /var/www/html/index.html
+        </div>
     </div>
 </body>
 </html>

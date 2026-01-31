@@ -1,41 +1,102 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nginx работает!</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #f0f2f5;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            color: #333;
-        }
-        .container {
-            text-align: center;
-            background: white;
-            padding: 3rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            max-width: 500px;
-        }
-        h1 { color: #009639; margin-bottom: 10px; }
-        p { font-size: 1.1rem; line-height: 1.6; }
-        .footer { margin-top: 25px; font-size: 0.8rem; color: #888; }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Привет, юный хакер!</title>
+  <style>
+    :root{--bg1:#06070a;--bg2:#021124;--accent:#00ff9f;--accent2:#6effff}
+    html,body{height:100%;margin:0;font-family:Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Segoe UI Emoji', 'Noto Color Emoji';color:#cfe;}
+    body{background:linear-gradient(120deg,var(--bg1),var(--bg2));display:flex;align-items:center;justify-content:center;overflow:hidden}
+    canvas#matrix{position:fixed;inset:0;z-index:0;opacity:0.55}
+    .container{position:relative;z-index:2;max-width:980px;padding:48px;border-radius:16px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));box-shadow:0 10px 40px rgba(0,0,0,0.6);backdrop-filter: blur(6px);border:1px solid rgba(0,255,160,0.06)}
+    h1{font-size:48px;margin:0 0 8px 0;letter-spacing:0.6px;color:var(--accent);text-shadow:0 0 18px rgba(0,255,160,0.12),0 2px 12px rgba(0,0,0,0.6)}
+    p.lead{margin:0 0 20px 0;color:#bfe;opacity:0.95;font-size:18px}
+    .card{display:flex;gap:20px;align-items:center}
+    .avatar{width:128px;height:128px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;color:#012;box-shadow:0 6px 24px rgba(0,255,160,0.08);font-weight:700;font-family:monospace;font-size:28px}
+    .actions{display:flex;gap:12px;margin-top:18px}
+    .btn{padding:12px 18px;border-radius:10px;border:0;cursor:pointer;background:transparent;color:var(--accent);font-weight:600;box-shadow:inset 0 -2px 0 rgba(0,0,0,0.2)}
+    .btn.primary{background:linear-gradient(90deg,rgba(0,255,160,0.12),rgba(110,255,255,0.06));border:1px solid rgba(0,255,160,0.15)}
+    .btn.ghost{background:transparent;border:1px dashed rgba(255,255,255,0.03);color:#cfe}
+    .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:22px}
+    .feature{padding:12px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));border:1px solid rgba(255,255,255,0.02)}
+    .feature h4{margin:0 0 6px 0;color:var(--accent);font-size:16px}
+    footer{position:fixed;right:18px;bottom:18px;z-index:3;color:rgba(200,255,220,0.6);font-size:13px}
+    @media (max-width:640px){h1{font-size:32px}.avatar{width:96px;height:96px;font-size:20px}.container{padding:20px}}
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Nginx готов к работе!</h1>
-        <p>Если вы видите эту страницу, значит веб-сервер успешно установлен и настроен.</p>
-        <p>Время приступать к деплою вашего проекта. 🚀</p>
-        <div class="footer">
-            Настроено в /var/www/html/index.html
+  <canvas id="matrix"></canvas>
+  <div class="container">
+    <header style="display:flex;align-items:flex-start;gap:18px;">
+      <div class="avatar">0xYA</div>
+      <div style="flex:1">
+        <h1>Привет, юный хакер!</h1>
+        <p class="lead">Добро пожаловать в маленький уголок для экспериментов и игр с кодом. Здесь безопасно учиться, создавать, ломать и собирать снова.</p>
+        <div class="actions">
+          <button class="btn primary" onclick="scrollToTutorial()">Начать приключение</button>
+          <button class="btn ghost" onclick="openPlayground()">Открыть песочницу</button>
         </div>
-    </div>
+      </div>
+    </header>
+
+    <section id="features" class="features">
+      <div class="feature">
+        <h4>Эксперименты</h4>
+        <p style="margin:0;color:#dff;opacity:0.9">Небольшие задания и примеры кода — от основ до продвинутых трюков.</p>
+      </div>
+      <div class="feature">
+        <h4>Практика</h4>
+        <p style="margin:0;color:#dff;opacity:0.9">Интерактивная песочница, чтобы пробовать идеи без риска.</p>
+      </div>
+      <div class="feature">
+        <h4>Сообщество</h4>
+        <p style="margin:0;color:#dff;opacity:0.9">Делись достижениями, помогай другим и учись вместе.</p>
+      </div>
+    </section>
+
+    <section id="tutorial" style="margin-top:22px;padding-top:12px;border-top:1px dashed rgba(255,255,255,0.02);">
+      <h3 style="color:var(--accent);margin:0 0 12px 0">Как начать</h3>
+      <ol style="padding-left:20px;margin:0;color:#dff;">
+        <li>Открой код — смотри, как всё работает.</li>
+        <li>Сделай свою копию и начни менять цвета, тексты и эффекты.</li>
+        <li>Пробуй новую фичу — и не бойся ошибаться.</li>
+      </ol>
+    </section>
+  </div>
+
+  <footer>codebiker911 · Добро пожаловать</footer>
+
+  <script>
+    // Matrix-like rain effect on canvas — lightweight
+    const canvas = document.getElementById('matrix');
+    const ctx = canvas.getContext('2d');
+    let w = canvas.width = innerWidth;
+    let h = canvas.height = innerHeight;
+    const cols = Math.floor(w / 20) + 1;
+    const ypos = Array(cols).fill(0);
+
+    function matrix() {
+      ctx.fillStyle = 'rgba(0,0,0,0.06)';
+      ctx.fillRect(0,0,w,h);
+      ctx.fillStyle = 'rgba(0,255,160,0.85)';
+      ctx.font = '16px monospace';
+      for (let i = 0; i < ypos.length; i++) {
+        const text = String.fromCharCode(33 + Math.random() * 94);
+        ctx.fillText(text, i * 20, ypos[i] * 20);
+        if (ypos[i] * 20 > h && Math.random() > 0.975) ypos[i] = 0;
+        ypos[i]++;
+      }
+    }
+    let anim = setInterval(matrix, 60);
+    addEventListener('resize', () => { w = canvas.width = innerWidth; h = canvas.height = innerHeight; });
+
+    function scrollToTutorial(){
+      document.getElementById('tutorial').scrollIntoView({behavior:'smooth'});
+    }
+    function openPlayground(){
+      alert('Песочница ещё не настроена — но скоро появится!');
+    }
+  </script>
 </body>
 </html>
